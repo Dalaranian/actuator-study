@@ -15,3 +15,6 @@ management:
         exclude:
           - logger
           - quartz
+#      cors:
+#        allowed-origins:
+#        allowed-methods:
