@@ -1,0 +1,17 @@
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    beans:
+      enabled: false
+    loggers:
+      enabled: true
+    quartz:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude:
+          - logger
+          - quartz
