@@ -10,13 +10,11 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class MyFunctionCounterConfig {
 
-    private final MyHttpRequestManagerWithdoutMicrometer myManager;
+    private final MyHttpRequestManagerWithoutMicrometer myManager;
     private final MeterRegistry meterRegistry;
 
     @PostConstruct
     void init() {
-        FunctionCounter.builder("myHttpRequestManagerWithdoutMicrometer", myManager, myManager -> {
-            return myManager.getCount();
-        }).register(meterRegistry);
+        FunctionCounter.builder("MyHttpRequestManagerWithoutMicrometer", myManager, MyHttpRequestManagerWithoutMicrometer::getCount).register(meterRegistry);
     }
 }

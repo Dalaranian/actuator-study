@@ -9,23 +9,24 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class MyHttpRequestManager {
-    private final MeterRegistry meterRegistry;
+
+    private final MeterRegistry meterRegistry;  // 생성자 주입
 
     private Counter httpRequestCounter;
 
     /**
-     * Registry 등록
+     * registry 에 등록
      */
     @PostConstruct
     void init() {
-        httpRequestCounter = Counter.builder("my.Http.Request")
+        httpRequestCounter = Counter.builder("myHttpRequest")
                 .register(meterRegistry);
     }
 
     /**
-     * counter 를 증가시킬 필요가 있을 때, 외부에서 이 메서드를 호출
+     * counter 증가시킬 필요가 있을때 외부에서 이 메서드를 호출
      */
-    public void incerase() {
+    public void increase() {
         httpRequestCounter.increment();
     }
 }
